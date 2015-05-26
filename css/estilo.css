@@ -169,7 +169,7 @@ span.rojo {
  	width:50%;
 }
 
-input {
+input, select{
     padding: 10px;
         padding-top: 10px;
         padding-right-value: 10px;
@@ -247,6 +247,11 @@ ul {
 		box-shadow: #000 0px 8px 8px;
 	}
 	.menu_admin > li {  
+		width: 100%;
+		list-style: none;
+		float: left;
+	}
+	.menu_usuario > li {  
 		width: 100%;
 		list-style: none;
 		float: left;

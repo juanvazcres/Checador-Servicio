@@ -4,7 +4,7 @@
         <title>Servicio social - Administrador</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/estilo.css" media="screen" >
+        <link rel="stylesheet" type="text/css" href="../../css/estilo.css" media="screen" >
    </head>
    <body>
        <div class="wrapper">
@@ -32,7 +32,7 @@
         
         <div class="push"></div>
         </div><!--wrapper-->
-        <?php include ("../footer.php"); ?>
-        <?php include ("../menu.html"); ?>
+        <?php include ("../../inc/footer.php"); ?>
+        <?php include ("../../inc/menu.html"); ?>
     </body>
 </html>
