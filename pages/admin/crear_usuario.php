@@ -17,22 +17,30 @@
             <form method="post" action="<?php $_PHP_SELF ?>">
             <div class="elemento">
                 <label for="usuarios_id_usuario">ID</label>
-                <input name="usuarios_id_usuario" type="text" id="usuarios_id_usuario" placeholder="Número de control"/>
+                <input name="usuarios_id_usuario" type="text" id="usuarios_id_usuario" placeholder="Número de control"
+                pattern="[E][0-9]{8}" title="no compatible"
+                />
                 <span class="rojo">*</span>
             </div>
             <div class="elemento">
                 <label for="usuarios_nombres_usuario">Nombres</label>
-                <input name="usuarios_nombres_usuario" type="text" id="usuarios_nombres_usuario" placeholder="Nombre(s)"/>
+                <input name="usuarios_nombres_usuario" type="text" id="usuarios_nombres_usuario" placeholder="Nombre(s)"
+                pattern="[A-Z][A-Za-z]+" title="solo letras y empezando en Mayúsculas"
+                />
                 <span class="rojo">*</span>
             </div>
             <div class="elemento">
                 <label for="usuarios_apellidos_usuario">Apellidos</label>
-                <input name="usuarios_apellidos_usuario" type="text" id="usuarios_apellidos_usuario" placeholder="Apellido(s)"/>
+                <input name="usuarios_apellidos_usuario" type="text" id="usuarios_apellidos_usuario" placeholder="Apellido(s)"
+                pattern="[A-Z][A-Za-z]+" title="solo letras y empezando en Mayúsculas"
+                />
                 <span class="rojo">*</span>
             </div>
             <div class="elemento">
                 <label for="usuarios_celular_usuario">Celular</label>
-                <input name="usuarios_celular_usuario" type="text" id="usuarios_celular_usuario" placeholder="Celular"/>
+                <input name="usuarios_celular_usuario" type="text" id="usuarios_celular_usuario" placeholder="Celular"
+                pattern="[0-9]+" title="solo numeros"
+                />
                 <span class="rojo">*</span>
             </div>
             <div class="elemento">
