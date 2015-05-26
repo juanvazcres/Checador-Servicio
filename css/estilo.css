@@ -41,10 +41,10 @@ body {
 
 /*	NAV	*/
 #menu {
-	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	text-transform: uppercase;
+	padding-bottom: 2em;
 }
 .arrow{
 	padding-left: 0.3em;
@@ -75,6 +75,8 @@ body {
 ul li ul{
 	display: none;
 	visibility: hidden;
+	position: absolute;
+	width: 25%;
 }
 ul li ul li { 
   display: block; 
@@ -88,20 +90,27 @@ ul li:hover ul{
 #menu a:link, a:visited, .boton{
 	display: block;
 	color: #FFFFFF;
-	background-color: #388E3C;
 	text-align: center;
 	padding: 12px 0px;
 	text-decoration: none;
 	cursor:pointer;
 }
+#menu a:link, .boton{
+	background-color: #388E3C;
+}
 #menu ul li a:hover{
 	background-color: #43A047;
 }
-
 #menu a:hover , a:active, .boton:hover{
 	text-decoration: none;
 	background-color: #43A047;
 	cursor:pointer;
+}
+#menu ul> li > ul > li > a:link{
+		background-color: gray;
+}
+#menu ul> li > ul > li > a:hover{
+	background-color: #C8E6C9;
 }
 
 
@@ -115,17 +124,29 @@ ul li:hover ul{
 	height: 100%;
 	margin: 0 auto -3em; 
 }
-
-#login{
+.formulario{
     background: #FFF;
     margin:0 auto;
     margin-top:2em;
     margin-bottom:2em;
     box-shadow: #d7ddea 2px 8px 8px;
-    width:400px;
+}
+.formulario label {
+    width: 1%;
+    float: left;
+    padding-top: 0.7em;
+}
+span.rojo {
+    color: #F00;
+}
+#login{
+	width: 400px;
+}
+#formulario-usuario{
+	width: 600px;
 }
 
-#login h2{
+.formulario h2{
     background: #388E3C;
     font-weight:300;
     text-align:center;
@@ -136,15 +157,16 @@ ul li:hover ul{
     font-size: 2em;
 }
 
-div.elemento{
+.elemento{
 	padding: 10px 50px;
+	text-transform: uppercase;
+	color: #525B56;
 }
-
 .boton{
     border-radius: 0.3em;
     text-transform: uppercase;
 	font-size: 1em;
- 	width: 80%;
+ 	width:50%;
 }
 
 input {
@@ -211,29 +233,47 @@ ul {
 	.nav {
 		z-index: 10;
 		background-color: #fff;
-		width: 300px;
+		width: 200px;
 		position: absolute;
 		/* This trasform moves the drawer off canvas. */
-		-webkit-transform: translate(-300px, 0);
-		transform: translate(-300px, 0);
+		-webkit-transform: translate(-200px, 0);
+		transform: translate(-200px, 0);
 		/* Optionally, we animate the drawer. */
 		transition: transform 0.3s ease;
 	}
 	.nav.open {
 		-webkit-transform: translate(0, 0);
 		transform: translate(0, 0);
+		box-shadow: #000 0px 8px 8px;
 	}
-	.nav_item {
-		display: list-item;
-		border-bottom: 1px solid #E0E0E0;
+	.menu_admin > li {  
 		width: 100%;
+		list-style: none;
+		float: left;
+	}
+	ul li ul{
+		visibility: visible;
+		position:static;
+		width: 100%;
+	}
+	#menu{
+		padding-bottom: 0;
+	}
+	#menu ul> li > ul > li > a:link{
+		background-color: gray;
+	}
+	#menu ul> li > ul > li > a:hover{
+		background-color: #C8E6C9;
+	}
+	#menu a:link{
 		text-align: left;
+		padding-left: 10px;
 	}
 	.header_menu {
-		
+		display: inline-block;
 		position: absolute;
 		right: 0;
-		padding: 0.7em;
+		padding: 1em;
 	}
 	.header_menu svg {
 		width: 32px;

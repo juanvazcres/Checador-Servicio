@@ -9,16 +9,16 @@
    <body>
        <div class="wrapper">
        <?php include ("header.html"); ?>
-		<div id="login" align="center">
-            <h2>Iniciar sesión</h2>
-            <div class="formulario">
+		<div id="login" class="formulario" align="center">
+        <h2>Iniciar sesión</h2>
+        
                 <form action="proceso_login.php" method="post">
                     <div class="elemento"><input name="id" placeholder="Introduce tu ID" type="text"></div>
                     <div class="elemento"><input name="password" placeholder="Introduce tu contraseña" type="password"></div>
                     <div class="elemento"><input class="boton" value="Ingresar" type="submit"></div>
                     <p><?php echo $msg; ?></p>
                 </form> 
-            </div>
+        
         </div>
 
             <div class="push"></div>
