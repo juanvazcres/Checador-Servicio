@@ -1,329 +1,349 @@
-* {
-	margin: 0;
-}
-html, body {
-	height: 100%;
-	width: 100%;
-}
-body {
-	font-family: "PT Sans Narrow",sans-serif,"google";
-}
-/*	HEADER	*/
-.header, #nav, .wrappers{
-	box-sizing: border-box;
-}
-.header {
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-	transition: min-height 0.3s;
-	background-color: #1B5E20;
-}
-.header_contenido {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.header_titulo {
-	font-weight: 300;
-	font-size: 4em;
-	text-transform: uppercase;
-	margin: 0.5em 0.25em;
-	display: inline-block;
-	color: #FFFFFF;
-}
-
-.header_logo {
-	height: 72px;
-	margin-right: 1em;
-	vertical-align: top;
-	margin-top: 12px;
-}
-
-/*	NAV	*/
-#menu {
-	margin-left: auto;
-	margin-right: auto;
-	text-transform: uppercase;
-	padding-bottom: 2em;
-}
-.arrow{
-	padding-left: 0.3em;
-	font-size: 0.7em;
-}
-.menu_admin{
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-.menu_usuario{
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-.menu_admin > li {  
-	width: 25%;
-	cursor: pointer;
-	list-style: none;
-	float: left;
-}
-.menu_usuario > li {
-	width: 50%;
-	cursor: pointer;
-	list-style: none;
-	float: left;
-}
-ul li ul{
-	display: none;
-	visibility: hidden;
-	position: absolute;
-	width: 25%;
-}
-ul li ul li { 
-  display: block; 
-}
-ul li:hover ul{
-	display: block;
-	opacity: 1;
-	visibility: visible;
-}
-
-#menu a:link, a:visited, .boton{
-	display: block;
-	color: #FFFFFF;
-	text-align: center;
-	padding: 12px 0px;
-	text-decoration: none;
-	cursor:pointer;
-}
-#menu a:link, .boton{
-	background-color: #388E3C;
-}
-#menu ul li a:hover{
-	background-color: #43A047;
-}
-#menu a:hover , a:active, .boton:hover{
-	text-decoration: none;
-	background-color: #43A047;
-	cursor:pointer;
-}
-#menu ul> li > ul > li > a:link{
-		background-color: gray;
-}
-#menu ul> li > ul > li > a:hover{
-	background-color: #C8E6C9;
-}
-
-
-/*	Contenido	*/
-.espacio {
-	height: 35px;
-}
-.wrapper {
-	min-height: 100%;
-	height: auto !important; 
-	height: 100%;
-	margin: 0 auto -3em; 
-}
-.formulario{
-    background: #FFF;
-    margin:0 auto;
-    margin-top:2em;
-    margin-bottom:2em;
-    box-shadow: #d7ddea 2px 8px 8px;
-}
-.formulario label {
-    width: 1%;
-    float: left;
-    padding-top: 0.7em;
-}
-span.rojo {
-    color: #F00;
-}
-#login{
-	width: 400px;
-}
-#formulario-usuario{
-	width: 600px;
-}
-
-.formulario h2{
-    background: #388E3C;
-    font-weight:300;
-    text-align:center;
-    color:#fff;
-    text-transform: uppercase;
-    
-    padding:20px 0;
-    font-size: 2em;
-}
-
-.elemento{
-	padding: 10px 50px;
-	text-transform: uppercase;
-	color: #525B56;
-}
-.boton{
-    border-radius: 0.3em;
-    text-transform: uppercase;
-	font-size: 1em;
- 	width:50%;
-}
-
-input, select{
-    padding: 10px;
-        padding-top: 10px;
-        padding-right-value: 10px;
-        padding-bottom: 10px;
-        padding-left-value: 10px;
-        padding-left-ltr-source: physical;
-        padding-left-rtl-source: physical;
-        padding-right-ltr-source: physical;
-        padding-right-rtl-source: physical;
-}
-ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-
-/*	FOOTER	*/
-.footer, .push {
-	height: 3em; 
-}
-.footer{
-	background-color: #1B5E20;	
-	width: 100%;
-	text-align: center;
-}
-.footer li {
-	display: inline-block;
-	margin: 0 1em;
-}
-
-.footer a {
-	text-decoration: none;
-	color: #FFFFFF;
-}
-
-.footer a:hover {
-	text-decoration: underline;
-	color: red;
-}
-
-
-.header_menu {
-		display: none;
-}
-
-/*	De menor a mayor	*/
-@media screen and (max-width: 449px) {
-	.caja {
-		width: 100%;
-	}
-	.header_logo {
-		height: 48px;
-		margin-right: 0.5em;
-	}
-	.header_titulo {
-		margin-left: 0;
-		font-size: 1.4em;
-		vertical-align: bottom;
-	}
-	.nav {
-		z-index: 10;
-		background-color: #fff;
-		width: 200px;
-		position: absolute;
-		/* This trasform moves the drawer off canvas. */
-		-webkit-transform: translate(-200px, 0);
-		transform: translate(-200px, 0);
-		/* Optionally, we animate the drawer. */
-		transition: transform 0.3s ease;
-	}
-	.nav.open {
-		-webkit-transform: translate(0, 0);
-		transform: translate(0, 0);
-		box-shadow: #000 0px 8px 8px;
-	}
-	.menu_admin > li {  
-		width: 100%;
-		list-style: none;
-		float: left;
-	}
-	.menu_usuario > li {  
-		width: 100%;
-		list-style: none;
-		float: left;
-	}
-	ul li ul{
-		visibility: visible;
-		position:static;
-		width: 100%;
-	}
-	#menu{
-		padding-bottom: 0;
-	}
-	#menu ul> li > ul > li > a:link{
-		background-color: gray;
-	}
-	#menu ul> li > ul > li > a:hover{
-		background-color: #C8E6C9;
-	}
-	#menu a:link{
-		text-align: left;
-		padding-left: 10px;
-	}
-	.header_menu {
-		display: inline-block;
-		position: absolute;
-		right: 0;
-		padding: 1em;
-	}
-	.header_menu svg {
-		width: 32px;
-		fill: #E0E0E0;
-	}
-	#login{
-    	width:100%;
-	}
-	#login h2, .boton{
-	    font-size: 1.3em;
-	}
-	div.elemento{
-		padding: 7px 10px;
-	}
-}
-
-@media screen and (min-width: 450px) {
-	.header_titulo {
-		margin-left: 0;
-		font-size: 2.2em;
-		vertical-align: bottom;
-	}
-	#menu a{
-		font-size: 70%;
-	}
-}
-
-@media screen and (min-width:550px) {
-	.header_titulo {
-		margin-left: 0;
-		font-size: 3em;
-		vertical-align: bottom;
-	}
-	#menu a{
-		font-size: 90%;
-	}
-}
-
-@media screen and (min-width: 700px) {
-	.contenedor {
-		width: 800px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	#menu a{
-		font-size: 100%;
-	}
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	font-family: "PT Sans Narrow",sans-serif,"google";
+}
+/*	HEADER	*/
+.header, #nav, .wrappers{
+	box-sizing: border-box;
+}
+.header {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+	transition: min-height 0.3s;
+	background-color: #1B5E20;
+}
+.header_contenido {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header_titulo {
+	font-weight: 300;
+	font-size: 4em;
+	text-transform: uppercase;
+	margin: 0.5em 0.25em;
+	display: inline-block;
+	color: #FFFFFF;
+}
+
+.header_logo {
+	height: 72px;
+	margin-right: 1em;
+	vertical-align: top;
+	margin-top: 12px;
+}
+
+/*	NAV	*/
+#menu {
+	margin-left: auto;
+	margin-right: auto;
+	text-transform: uppercase;
+	padding-bottom: 2em;
+}
+.arrow{
+	padding-left: 0.3em;
+	font-size: 0.7em;
+}
+.menu_admin{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.menu_usuario{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.menu_admin > li {  
+	width: 25%;
+	cursor: pointer;
+	list-style: none;
+	float: left;
+}
+.menu_usuario > li {
+	width: 50%;
+	cursor: pointer;
+	list-style: none;
+	float: left;
+}
+ul li ul{
+	display: none;
+	visibility: hidden;
+	position: absolute;
+	width: 25%;
+}
+ul li ul li { 
+  display: block; 
+}
+ul li:hover ul{
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+
+#menu a:link, a:visited, .boton{
+	display: block;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 12px 0px;
+	text-decoration: none;
+	cursor:pointer;
+}
+#menu a:link, .boton{
+	background-color: #388E3C;
+}
+#menu ul li a:hover{
+	background-color: #43A047;
+}
+#menu a:hover , a:active, .boton:hover{
+	text-decoration: none;
+	background-color: #43A047;
+	cursor:pointer;
+}
+#menu ul> li > ul > li > a:link{
+		background-color: gray;
+}
+#menu ul> li > ul > li > a:hover{
+	background-color: #C8E6C9;
+}
+
+
+/*	Contenido	*/
+.espacio {
+	height: 35px;
+}
+.wrapper {
+	min-height: 100%;
+	height: auto !important; 
+	height: 100%;
+	margin: 0 auto -3em; 
+}
+.formulario{
+    background: #FFF;
+    margin:0 auto;
+    margin-top:2em;
+    margin-bottom:2em;
+    box-shadow: #d7ddea 2px 8px 8px;
+}
+.formulario label {
+    width: 1%;
+    float: left;
+    padding-top: 0.7em;
+}
+label.error[generated=true] , .output {
+	color: red;
+	font-size: small;
+	width: 100%;
+        text-transform:inherit;
+	padding-bottom: 1em;
+}
+span.rojo {
+    color: #F00;
+}
+span.azul {
+    color: blue;
+}
+.formulario p{
+	color: red;
+}
+#login, #changePassword{
+	width: 400px;
+}
+#formulario-usuario{
+	width: 600px;
+}
+
+.formulario h2{
+    background: #388E3C;
+    font-weight:300;
+    text-align:center;
+    color:#fff;
+    text-transform: uppercase;
+    
+    padding:20px 0;
+    font-size: 2em;
+}
+
+.elemento{
+	padding: 10px 50px;
+	text-transform: uppercase;
+	color: #525B56;
+}
+.boton{
+    border-radius: 0.3em;
+    text-transform: uppercase;
+	font-size: 1em;
+ 	width:50%;
+}
+
+input, select{
+    padding: 10px;
+        padding-top: 10px;
+        padding-right-value: 10px;
+        padding-bottom: 10px;
+        padding-left-value: 10px;
+        padding-left-ltr-source: physical;
+        padding-left-rtl-source: physical;
+        padding-right-ltr-source: physical;
+        padding-right-rtl-source: physical;
+}
+select{
+	width: 17em;
+	text-transform: none;
+}
+option{
+	text-transform: none;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+/*	FOOTER	*/
+.footer, .push {
+	height: 3em; 
+}
+.footer{
+	background-color: #1B5E20;	
+	width: 100%;
+	text-align: center;
+}
+.footer li {
+	display: inline-block;
+	margin: 0 1em;
+}
+
+.footer a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+
+.header_menu {
+		display: none;
+}
+
+/*	De menor a mayor	*/
+@media screen and (max-width: 449px) {
+	.caja {
+		width: 100%;
+	}
+	.header_logo {
+		height: 48px;
+		margin-right: 0.5em;
+	}
+	.header_titulo {
+		margin-left: 0;
+		font-size: 1.4em;
+		vertical-align: bottom;
+	}
+	.nav {
+		z-index: 10;
+		background-color: #fff;
+		width: 200px;
+		position: absolute;
+		/* This trasform moves the drawer off canvas. */
+		-webkit-transform: translate(-200px, 0);
+		transform: translate(-200px, 0);
+		/* Optionally, we animate the drawer. */
+		transition: transform 0.3s ease;
+	}
+	.nav.open {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+		box-shadow: #000 0px 8px 8px;
+	}
+	.menu_admin > li {  
+		width: 100%;
+		list-style: none;
+		float: left;
+	}
+	.menu_usuario > li {  
+		width: 100%;
+		list-style: none;
+		float: left;
+	}
+	ul li ul{
+		visibility: visible;
+		position:static;
+		width: 100%;
+	}
+	#menu{
+		padding-bottom: 0;
+	}
+	#menu ul> li > ul > li > a:link{
+		background-color: gray;
+	}
+	#menu ul> li > ul > li > a:hover{
+		background-color: #C8E6C9;
+	}
+	#menu a:link{
+		text-align: left;
+		padding-left: 10px;
+	}
+	.header_menu {
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		padding: 1em;
+	}
+	.header_menu svg {
+		width: 32px;
+		fill: #E0E0E0;
+	}
+	#login{
+    	width:100%;
+	}
+	#login h2, .boton{
+	    font-size: 1.3em;
+	}
+	div.elemento{
+		padding: 7px 10px;
+	}
+}
+
+@media screen and (min-width: 450px) {
+	.header_titulo {
+		margin-left: 0;
+		font-size: 2.2em;
+		vertical-align: bottom;
+	}
+	#menu a{
+		font-size: 70%;
+	}
+}
+
+@media screen and (min-width:550px) {
+	.header_titulo {
+		margin-left: 0;
+		font-size: 3em;
+		vertical-align: bottom;
+	}
+	#menu a{
+		font-size: 90%;
+	}
+}
+
+@media screen and (min-width: 700px) {
+	.contenedor {
+		width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#menu a{
+		font-size: 100%;
+	}
 }
