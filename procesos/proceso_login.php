@@ -15,7 +15,7 @@
     $result=mysqli_query($conexion,$query);
     if(mysqli_num_rows($result)){
         $query=sprintf("
-        SELECT id_usuario, password_usuario, rol_usuario, estado_usuario FROM Usuarios 
+        SELECT id_usuario, password_usuario, rol_usuario, estado_usuario, primera_usuario FROM Usuarios 
         WHERE id_usuario='%s' and password_usuario='%s';
             ", $id, $pass);
         $result=mysqli_query($conexion,$query);
@@ -32,6 +32,7 @@
                 $_SESSION['id_usuario']=$array['id_usuario'];
                 $_SESSION['password_usuario']=$array['password_usuario'];
                 $_SESSION['rol_usuario']=$array['rol_usuario'];
+                $_SESSION['primera_usuario']=$array['primera_usuario'];
                     
                 switch ($_SESSION['rol_usuario']) {
                     case 1:

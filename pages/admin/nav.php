@@ -1,6 +1,7 @@
 <div id="menu" class="nav">
     <?php
-        if($_SESSION['rol_usuario']=1){
+        session_start();
+        if($_SESSION['rol_usuario']==1){
             echo '
             <ul class="menu_admin">
         <li><a href="#">Administrador<span class="arrow">&#9660;</span></a>
@@ -33,4 +34,4 @@
 		</li>
 		<li><a href="cuenta.php">Cuenta</a></li>
 	</ul>
-</div>
+</div>	

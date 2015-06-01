@@ -1,50 +1,58 @@
 <?php
     session_start();
-    include("../../db/conf.php");
-    
-    if($_POST){
-        $id_usuario = $_POST['id_usuario'];
-        $nombres_usuario = $_POST['nombres_usuario'];
-        $apellidos_usuario = $_POST['apellidos_usuario'];
-        $celular_usuario = $_POST['celular_usuario'];
-        $carrera_usuario = $_POST['carrera_usuario'];
-        
-        $horario_usuario = $_FILES["horario_usuario"]["name"];
-        $ext = strtolower(substr(strrchr($horario_usuario, "."),1));
-        $dir = "../../img/horarios/";
-        $dir2 = "img/horarios/";
-        
-        /*
-        if(!(move_uploaded_file($_FILES["horario_usuario"]["tmp_name"], $dir.$id_usuario.".".$ext))){
-            echo "Error al intentar subir la foto, intente nuevamente";
+    if ($_SESSION["rol_usuario"]==1 || $_SESSION["rol_usuario"]==2){
+
+        if($_SESSION["primera_usuario"]==1){
+            $error = "Por favor, cambia la contraseña por defecto.";
+            header("Location: cuenta.php?msg=".$error);
         }
-         */
         
-        
-        $con = Conectarse();
-        $query = sprintf("SELECT id_usuario FROM Usuarios WHERE id_usuario='%s'", $id_usuario);
-        $result = mysqli_query($con, $query);
-        
-        if(mysqli_num_rows($result)){
-            $error = "Este id(".$id_usuario.") ya se encuentra registrado";
-            header("Location: crear_usuario.php?msg=".$error);
-            mysqli_close($con);
-        }else{
-            mysqli_free_result($result);
-            $query = "INSERT INTO Usuarios(id_usuario, nombres_usuario, apellidos_usuario, telefono_usuario, id_carrera_usuario, horario_usuario)
-                        VALUES('$id_usuario','$nombres_usuario','$apellidos_usuario','$celular_usuario', '$carrera_usuario', '$dir$id_usuario.$ext');";                      
-            $resultado = mysqli_query($con, $query);
-            if($resultado){
-                $val = "Usuario creado";
-                header('Location: crear_usuario.php?msg2='.$val.'');
+        include("../../db/conf.php");
+        if($_POST){
+            $id_usuario = $_POST['id_usuario'];
+            $nombres_usuario = $_POST['nombres_usuario'];
+            $apellidos_usuario = $_POST['apellidos_usuario'];
+            $celular_usuario = $_POST['celular_usuario'];
+            $carrera_usuario = $_POST['carrera_usuario'];
+            
+            $con = Conectarse();
+            $query = sprintf("SELECT id_usuario FROM Usuarios WHERE id_usuario='%s'", $id_usuario);
+            $result = mysqli_query($con, $query);
+            
+            if(mysqli_num_rows($result)){
+                $error = "Este id(".$id_usuario.") ya se encuentra registrado";
+                header("Location: crear_usuario.php?msg=".$error);
+                mysqli_close($con);
             }else{
-                $error = "Ocurrió un error al crear el registro, intente nuevamente.";
-                header('Location: crear_usuario.php?msg='.$error.'');
+                $target_dir = "../../img/horarios/";
+                $target_dir2 = "/img/horarios/";
+                $target_file = $target_dir . basename($_FILES["horario"]["name"]);
+                
+                $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                $dir = $target_dir . $id_usuario . "." . $imageFileType;
+
+                
+                if (move_uploaded_file($_FILES["horario"]["tmp_name"], $dir)) {
+                    mysqli_free_result($result);
+                    $query = "INSERT INTO Usuarios(id_usuario, nombres_usuario, apellidos_usuario, telefono_usuario, id_carrera_usuario, horario_usuario)
+                                VALUES('$id_usuario','".utf8_decode($nombres_usuario)."','".utf8_decode($apellidos_usuario)."','$celular_usuario', '$carrera_usuario', '$target_dir2$id_usuario.$imageFileType');";                      
+                    $resultado = mysqli_query($con, $query);
+                    if($resultado){
+                        header('Location: asignar_horario.php?usr='.$id_usuario.'');
+                    }else{
+                        $error = "Ocurrió un error al crear el registro, intente nuevamente.";
+                        header('Location: crear_usuario.php?msg='.$error.'');
+                    }
+                } else {
+                    $error = "Hubo un error al ingresar los datos, intente nuevamente";
+                    header("Location: crear_usuario.php?msg=".$error);
+                    mysqli_close($con);
+                }                
             }
+            
+            mysqli_close($con);
         }
-        mysqli_close($con);
-    }
-?>
+?> 
 <!DOCTYPE html>
 <html lang="es-ES">
     <head class="header">
@@ -54,14 +62,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../../css/estilo.css" media="screen" >
    </head>
-   <body>
-       <div class="wrapper">
+    <body>
+        <div class="wrapper">
         <?php include ("header.html"); ?>
         <?php include ("nav.php"); ?>
         <!-- Contenido -->
         <div id="formulario-usuario" class="formulario" align="center">
             <h2>Crear usuario</h2>
-            <form method="post" action="crear_usuario.php" id="crear_usuario" name="crear_usuario">
+            <form action="crear_usuario.php" method="post" enctype="multipart/form-data" name="crear_usuario" id="crear_usuario">
                 <?php
                 if (isset($_GET['msg'])) {
                     $msg = $_GET['msg'];
@@ -80,7 +88,7 @@
                     $msg = '<br>';
                 }
                 ?>
-            <div class="elemento">
+                <div class="elemento">
                 <label for="id_usuario">ID</label>
                 <input name="id_usuario" type="text" id="id_usuario" placeholder="Número de control"
                 title="no compatible"
@@ -124,22 +132,21 @@
                 <span class="rojo">*</span>
             </div>
             <div class="elemento"><br>
-                <label for="horario_usuario">Horario</label>
-                <input type="file" name="horario_usuario" id="horario_usuario" />
+                <label for="horario">Horario</label>
+                <input type="file" name="horario" id="horario">
                 <span class="rojo">*</span>
             </div>
             <div class="elemento">
-                <input name="agregar_usuario" class="boton" type="submit" id="agregar_usuario" value="Añadir usuario">
+                <input class="boton" type="submit" value="Agregar" name="submit">
             </div>
             </form>
         </div>
         
-        <div class="push"></div>
-        </div><!--wrapper-->
-        <?php include ("../../inc/footer.php"); ?>
-        <?php include ("../../inc/menu.html"); ?>
-        
-        <!-- Validación de lado del usuario -->
+    <div class="push"></div>
+    </div><!--wrapper-->
+    <?php include ("../../inc/footer.php"); ?>
+    <?php include ("../../inc/menu.html"); ?>
+    <!-- Validación de lado del usuario -->
         <script src="../../js/jquery-1.9.1.js"></script>
         <script src="../../js/jquery.validate.min.js"></script>
         <script src="../../js/addtional-methods.min.js"></script>
@@ -248,3 +255,8 @@
         </script>
     </body>
 </html>
+<?php
+}else{
+header('Location: ../../procesos/logout.php');
+}
+?>

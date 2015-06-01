@@ -1,4 +1,8 @@
 <?php
+	session_start();
+	if (isset($_SESSION["id_usuario"])){
+header('Location: procesos/logout.php');
+}
     if (isset($_GET['msg'])) {
         $msg=$_GET['msg'];
     }else{
@@ -31,4 +35,4 @@
         
        <?php include ("inc/footer.php"); ?> 
     </body>
-</html>
+</html>		
